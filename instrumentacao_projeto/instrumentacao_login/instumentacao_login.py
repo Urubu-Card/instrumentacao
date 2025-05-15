@@ -7,7 +7,7 @@ st.set_page_config(page_icon="⚙",page_title="Login : ", layout="centered")
 
 
 import instru_bliblioteca as bl
-import mysql.connector as my
+
 
 
 
