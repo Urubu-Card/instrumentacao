@@ -101,7 +101,7 @@ def verificar_no_db(email,senha):
 
 
 def login1():
-    con , cu = conCursor()    
+       
 
     email= st.text_input("E-Mail : ")
     senha = st.text_input("Senha : ", type="password")
@@ -112,7 +112,7 @@ def login1():
             st.error("Erro : O e-mail digitado não é valido !")
         else:
             verificar_no_db(email, senha)
-            con.close()
+            
     return email
 
 
