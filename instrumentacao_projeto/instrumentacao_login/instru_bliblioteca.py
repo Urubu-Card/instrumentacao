@@ -1,21 +1,20 @@
 import streamlit as st
-import mysql.connector as my
+
 import re
 import time
+from sqlalchemy import create_engine
+import pandas as pd
+import os
 
                       
 
-
+def conCursor():
 #Connection e Cursor
-con = my.connect(
-        host="localhost",           # Ou o IP do servidor MySQL
-        user="root",                # Substitua pelo seu usuário
-        password="edu123",          # Substitua pela (edu123)
-        database="login"           # Nome da sua base de dados
-    )
+    DATABASE_URL = os.environ["DATABASE_URL"]
+    engine = create_engine(DATABASE_URL)
 
-cu = con.cursor()
-
+    # Para leitura e escrita com pandas
+    return engine
 
         
 def css():
@@ -83,12 +82,14 @@ def validar_email(email):
 
 
 def verificar_no_db(email,senha):
-    colocar_no_DB ="SELECT * FROM dados WHERE email = %s AND senha = %s"
-    dados = (email,senha)
-    cu.execute(colocar_no_DB,dados)
-    resultado = cu.fetchone()
+    engine = conCursor()
+    
+    ver_noDB =f"SELECT * FROM dados WHERE email = '{email}' AND senha = {senha}"
+   
+    
+    df = pd.read_sql(ver_noDB,engine)
 
-    if resultado:
+    if not df.empty:
         with st.empty():
             with st.spinner("Login Bem-Sucedido! Redirecionando..."):
                 time.sleep(3)
@@ -96,10 +97,12 @@ def verificar_no_db(email,senha):
     else:
         st.error("Usuario não cadastrado. ")
 
-    con.commit()
+    
 
 
-def login1():                
+def login1():
+    con , cu = conCursor()    
+
     email= st.text_input("E-Mail : ")
     senha = st.text_input("Senha : ", type="password")
     if st.button("Entrar"):
