@@ -12,19 +12,6 @@ import instru_bliblioteca as bl
 
 
 
-
-
-#Connection e Cursor
-con = my.connect(
-        host="localhost",           # LocalHost ou ip do Servidor
-        user="root",                #Usuario
-        password="edu123",          # Senha : ("edu123")
-        database="login"            # Nome do banco de dados
-    )
-
-cu = con.cursor()
-
-
 #Css da Pagina
 bl.css()
 
