@@ -85,10 +85,9 @@ def validar_email(email):
 def verificar_no_db(email,senha):
     engine = conCursor()
     
-    ver_noDB =f"SELECT * FROM usuarios WHERE email = '{email}' AND senha = {senha}"
+    query = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha"
+    df = pd.read_sql(query, con=engine, params={"email": email, "senha": senha})
 
-    
-    df = pd.read_sql(ver_noDB,engine)
 
     if not df.empty:
         with st.empty():
@@ -121,10 +120,3 @@ def login1():
 st.markdown('</div>', unsafe_allow_html=True)
 
 
-
-grupoPaginas ={
-    "Menu": [st.Page("calculadora.py" , title="Piroca")]
-}
-
-nav = st.navigation(grupoPaginas)
-nav.run
