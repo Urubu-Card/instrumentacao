@@ -1,6 +1,5 @@
 import streamlit as st
 
-st.set_page_config(page_title="Página Principal")
 
 import instru_bliblioteca as bl
 
