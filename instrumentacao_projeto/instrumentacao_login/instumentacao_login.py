@@ -25,9 +25,33 @@ bl.validar_email(email)
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-grupoPaginas ={
-    "Menu": [st.Page("calculadora.py" , title="Piroca")]
-}
+import os
 
-nav = st.navigation(grupoPaginas)
-nav.run()
+
+def listar_paginas():
+    st.title("🔍 Diagnóstico de Navegação com switch_page")
+
+    main_path = os.getcwd()
+    st.write(f"📁 Diretório atual: `{main_path}`")
+
+    # Verifica se existe a pasta 'pages'
+    pages_path = os.path.join(main_path, "pages")
+    if not os.path.exists(pages_path):
+        st.error("❌ Pasta 'pages/' não encontrada. Crie uma pasta chamada 'pages'.")
+        return
+
+    arquivos = os.listdir(pages_path)
+    arquivos_py = [f for f in arquivos if f.endswith(".py")]
+
+    if not arquivos_py:
+        st.warning("⚠️ Nenhum arquivo .py encontrado em 'pages/'.")
+        return
+
+    st.success("✅ Arquivos encontrados em 'pages/':")
+    for arquivo in arquivos_py:
+        nome_pagina = arquivo.replace(".py", "")
+        st.write(f"- `pages/{nome_pagina}` (Use com: `st.switch_page('pages/{nome_pagina}')`)")
+
+    st.info("👀 Use o nome da página exatamente como listado acima, sem '.py'.")
+
+listar_paginas()
