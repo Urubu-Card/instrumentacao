@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_icon=":material/menu:",page_title="Menu",layout="centered")  #Pra nao dar erro né padrão
+st.set_page_config(page_title="Página Principal")
 
 import instru_bliblioteca as bl
 
