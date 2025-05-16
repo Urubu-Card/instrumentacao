@@ -95,7 +95,7 @@ def verificar_no_db(email, senha):
         with st.empty():
             with st.spinner("Login Bem-Sucedido! Redirecionando..."):
                 time.sleep(3)
-        st.page_link("main.py")
+                st.page_link("main.py")
     else:
         st.error("Usuário não cadastrado.")
 
