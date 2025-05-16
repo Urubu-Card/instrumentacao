@@ -81,13 +81,15 @@ def validar_email(email):
     padrao = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
     return re.match(padrao, email) is not None
 
-
-def verificar_no_db(email,senha):
+def verificar_no_db(email, senha):
     engine = conCursor()
     
-    query = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha"
-    df = pd.read_sql(query, con=engine, params={"email": email, "senha": senha})
-
+    try:
+        query = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha"
+        df = pd.read_sql(query, con=engine, params={"email": email, "senha": senha})
+    except Exception as e:
+        st.error(f"Erro ao consultar o banco de dados: {e}")
+        return
 
     if not df.empty:
         with st.empty():
@@ -95,10 +97,7 @@ def verificar_no_db(email,senha):
                 time.sleep(3)
         st.switch_page("pages/main.py")
     else:
-        st.error("Usuario não cadastrado. ")
-
-    
-
+        st.error("Usuário não cadastrado.")
 
 def login1():
 
