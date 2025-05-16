@@ -1,19 +1,19 @@
 import streamlit as st
-
 import re
 import time
 from sqlalchemy import create_engine
 import pandas as pd
 import os
 
-                      
+            
 
 def conCursor():
-#Connection e Cursor
+    "Faz com quese conecte ao baco de dados"
+                    #Connection e Cursor
     DATABASE_URL = os.environ["DATABASE_URL"]
     engine = create_engine(DATABASE_URL)
 
-    # Para leitura e escrita com pandas
+    
     return engine
 
         
@@ -77,6 +77,7 @@ def titulo():
 
 
 def validar_email(email):
+    "Valida o e-mail do usuario com a tal definição = 'um_texto_antes_o_arroba@um_endereço_depois.com'"
     padrao = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
     return re.match(padrao, email) is not None
 
@@ -84,8 +85,8 @@ def validar_email(email):
 def verificar_no_db(email,senha):
     engine = conCursor()
     
-    ver_noDB =f"SELECT * FROM dados WHERE email = '{email}' AND senha = {senha}"
-   
+    ver_noDB =f"SELECT * FROM usuarios WHERE email = '{email}' AND senha = {senha}"
+
     
     df = pd.read_sql(ver_noDB,engine)
 
@@ -101,7 +102,7 @@ def verificar_no_db(email,senha):
 
 
 def login1():
-       
+
 
     email= st.text_input("E-Mail : ")
     senha = st.text_input("Senha : ", type="password")
@@ -118,3 +119,12 @@ def login1():
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
+
+
+grupoPaginas ={
+    "Menu": [st.Page("calculadora.py" , title="Piroca")]
+}
+
+nav = st.navigation(grupoPaginas)
+nav.run

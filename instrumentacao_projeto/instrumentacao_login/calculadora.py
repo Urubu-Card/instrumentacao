@@ -13,7 +13,7 @@ def calculadora():
 
     # ------------------- CONFIGURAÇÃO DA PÁGINA -------------------
 
-    st.title("Calculadora Estatística : ")
+    st.title("...Calculadora Estatística...")
     st.write("Insira dados para calcular média, variância, desvio padrão, incertezas e visualizar gráficos.")
 
     # ------------------- INTERFACE INICIAL -------------------

@@ -5,10 +5,7 @@ st.set_page_config(page_icon="⚙",page_title="Login : ", layout="centered")
             #Pra nao dar o erro quando entra
 
 
-
 import instru_bliblioteca as bl
-
-
 
 
 
@@ -27,3 +24,10 @@ bl.validar_email(email)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
+grupoPaginas ={
+    "Menu": [st.Page("calculadora.py" , title="Piroca")]
+}
+
+nav = st.navigation(grupoPaginas)
+nav.run()
