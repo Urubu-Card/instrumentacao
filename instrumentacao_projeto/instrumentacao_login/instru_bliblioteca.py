@@ -85,8 +85,8 @@ def verificar_no_db(email, senha):
     engine = conCursor()
     
     try:
-        query = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha"
-        df = pd.read_sql(query, con=engine, params={"email": email, "senha": senha})
+        query = "SELECT * FROM usuarios WHERE email = %s AND senha = %s"
+        df = pd.read_sql(query, con=engine, params=(email, senha))
     except Exception as e:
         st.error(f"Erro ao consultar o banco de dados: {e}")
         return
@@ -98,6 +98,7 @@ def verificar_no_db(email, senha):
         st.switch_page("pages/main.py")
     else:
         st.error("Usuário não cadastrado.")
+
 
 def login1():
 
