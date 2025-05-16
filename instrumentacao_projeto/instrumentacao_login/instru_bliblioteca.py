@@ -4,7 +4,7 @@ import time
 from sqlalchemy import create_engine
 import pandas as pd
 import os
-
+from streamlit_extras.switch_page_button import switch_page
             
 
 def conCursor():
