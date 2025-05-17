@@ -30,7 +30,7 @@ st.markdown(
             position: fixed;
             top: 0px;
             left: 0px;
-            width: 400px; /* ajuste conforme necessário */
+            width: 500px; /* ajuste conforme necessário */
             margin: 0;
             padding: 0;
             z-index: 0;
