@@ -23,5 +23,24 @@ email = bl.login1()
 bl.validar_email(email)
 
 
+
+img_url = "https://raw.githubusercontent.com/Urubu-Card/instrumentacao/main/instrumentacao/instrumentacao_projeto/imagens/decorativa.png"
+
+st.markdown(f"""
+    <style>
+        .bg-img {{
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 150px;
+            opacity: 0.8;
+            z-index: -1;
+        }}
+    </style>
+    <img class="bg-img" src="{img_url}"/>
+""", unsafe_allow_html=True)
+
+
+
 st.markdown('</div>', unsafe_allow_html=True)
 
