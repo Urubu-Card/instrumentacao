@@ -34,7 +34,7 @@ st.markdown(
             margin: 0;
             padding: 0;
             z-index: 0;
-            opacity: 0.3;  /* ajuste a transparência se quiser mais suave */
+            opacity: 0.9;  /* ajuste a transparência se quiser mais suave */
         }}
     </style>
     <img class="logo-img" src="https://raw.githubusercontent.com/Urubu-Card/instrumentacao/main/instrumentacao/instrumentacao_projeto/imagens/decorativa.png"/>
