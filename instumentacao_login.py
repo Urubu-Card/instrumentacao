@@ -28,7 +28,7 @@ st.markdown(
     <style>
         .logo-img {{
             position: fixed;
-            top: 15px;
+            top: 30px;
             left: 15px;
             width: 500px; /* aumente esse valor se quiser maior */
             opacity: 1;
