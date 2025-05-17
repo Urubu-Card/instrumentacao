@@ -9,6 +9,7 @@ import calculadora as calc
 if "logado" not in st.session_state or not st.session_state["logado"]:
     st.warning("Você precisa fazer login primeiro.")
     st.link_button("Clique aqui para voltar para o Login","https://instrumentacao-entrar.streamlit.app")
+    st.stop()
 
 
 
