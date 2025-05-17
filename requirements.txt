@@ -4,3 +4,5 @@ pandas
 matplotlib
 scipy
 streamlit-extras
+bcrypt
+hashlib
