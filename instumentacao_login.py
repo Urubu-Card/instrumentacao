@@ -24,7 +24,7 @@ bl.validar_email(email)
 
 
 
-img_url = "https://raw.githubusercontent.com/Urubu-Card/instrumentacao/main/instrumentacao/instrumentacao_projeto/imagens/decorativa.png"
+img_url = "https://cdn.discordapp.com/attachments/1310238818603106345/1373329491794989207/image_1.png?ex=682a0442&is=6828b2c2&hm=6bae7e56c55bd6a68910d441f6e27e8d0b495cde07d9f9a9c0e4d2aed1cf1a0f&"
 
 st.markdown(f"""
     <style>
