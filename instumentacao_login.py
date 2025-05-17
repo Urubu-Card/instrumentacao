@@ -30,8 +30,8 @@ st.markdown(
             position: fixed;
             top: 15px;
             left: 15px;
-            width: 120px; /* aumente esse valor se quiser maior */
-            opacity: 0.9;
+            width: 500px; /* aumente esse valor se quiser maior */
+            opacity: 1;
             z-index: 1;
         }}
     </style>
