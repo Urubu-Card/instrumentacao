@@ -4,8 +4,13 @@ import time
 from sqlalchemy import create_engine
 import pandas as pd
 import os
-from streamlit_extras.switch_page_button import switch_page  # <- IMPORTAÇÃO CERTA
+from streamlit_extras.switch_page_button import switch_page      
+import hashlib
+import bcrypt  
 
+
+def gerar_hash(senha):
+    return hashlib.sha256(senha.encode()).hexdigest()
 
 def conCursor():
     "Faz conexão com o banco de dados"
@@ -57,17 +62,23 @@ def verificar_no_db(email, senha):
     engine = conCursor()
 
     try:
-        query = "SELECT * FROM usuarios WHERE email = %s AND senha = %s"
-        df = pd.read_sql(query, con=engine, params=(email, senha))
+        query = "SELECT senha FROM usuarios WHERE email = %s"
+        df = pd.read_sql(query, con=engine, params=(email,))
     except Exception as e:
         st.error(f"Erro ao consultar o banco de dados: {e}")
         return
 
     if not df.empty:
-        with st.spinner("Login Bem-Sucedido! Redirecionando..."):
-            time.sleep(3)
-            st.session_state["logado"] = True
-            st.switch_page("pages/main.py")
+        senha_hash = df.iloc[0]["senha"]
+
+        # Comparar a senha digitada com o hash
+        if bcrypt.checkpw(senha.encode('utf-8'), senha_hash.encode('utf-8')):
+            with st.spinner("Login Bem-Sucedido! Redirecionando..."):
+                time.sleep(3)
+                st.session_state["logado"] = True
+                st.switch_page("pages/main.py")
+        else:
+            st.error("Senha incorreta.")
     else:
         st.error("Usuário não cadastrado.")
 
