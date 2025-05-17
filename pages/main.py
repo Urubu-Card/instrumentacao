@@ -4,7 +4,7 @@ st.set_page_config(page_icon=":material/menu:",page_title="Menu",layout="centere
 
 import instru_bliblioteca as bl
 
-import calculadora.py as calc
+import calculadora as calc
 
 bl.css()
 
