@@ -66,6 +66,7 @@ def verificar_no_db(email, senha):
     if not df.empty:
         with st.spinner("Login Bem-Sucedido! Redirecionando..."):
             time.sleep(3)
+            st.session_state["logado"] = True
             st.switch_page("pages/main.py")
     else:
         st.error("Usuário não cadastrado.")
