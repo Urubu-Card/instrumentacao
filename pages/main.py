@@ -6,6 +6,13 @@ import instru_bliblioteca as bl
 
 import calculadora as calc
 
+if "logado" not in st.session_state or not st.session_state["logado"]:
+    st.warning("Você precisa fazer login primeiro.")
+    st.switch_page("instumentacao_login")
+
+
+
+
 bl.css()
 
 
